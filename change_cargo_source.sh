@@ -9,8 +9,6 @@ function check_root(){
 }
 target_file=/home/$USER/.cargo/config
 
-
-
 mirror_comments=("crates-io" "中国科学技术大学" "上海交通大学" "清华大学" "rustcc社区")
 mirror_names=("crates-io" "ustc" "sjtu" "tuna" "rustcc")
 mirror_urls=("https://github.com/rust-lang/crates.io-index" "https://mirrors.ustc.edu.cn/crates.io-index" "https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index" "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git" "https://code.aliyun.com/rustcc/crates.io-index.git")
