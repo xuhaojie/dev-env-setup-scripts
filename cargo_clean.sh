@@ -7,13 +7,21 @@ fi
 
 directory=$1
 
-for file in `ls $directory`
-do
-        if [ -d $directory/$file ]
+
+function clean_dir(){
+    for file in `ls $1`
+    do
+        if [ -d $1"/"$file ]
         then
-			echo clean $file with cargo
-			cd $directory/$file
-			cargo clean
-			cd ..
+            clean_dir $1"/"$file
+        else
+			if [ "$file" == "Cargo.toml" ]; then
+				project=$1"/"$file
+            	echo -n "clean $1 ..."
+				cargo clean --manifest-path $project -q
+				echo " done."
+			fi
         fi
-done 
+    done
+}
+clean_dir $1
