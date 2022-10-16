@@ -46,10 +46,14 @@ dist=${lsb_release#*Codename:[[:space:]]}
 
 echo $dist
 
-
 target_file=/etc/apt/source.list
+backup_file=$target_file.bak
 
-sudo mv $target_file $target_file.bak
+if [ -f $backup_file ]; then 
+	rm  $backup_file
+fi
+
+sudo mv $target_file $backup_file
 
 echo "deb $mirror_url $dist main restricted universe multiverse" | sudo tee -a $target_file
 echo "deb-src $mirror_url $dist main restricted universe multiverse" | sudo tee -a $target_file

@@ -8,7 +8,7 @@ deb_file=/tmp/stlink_1.7.0-1_amd64.deb
 while [ ! -f $deb_file ]
 do
 	echo "download stlink install package"
-	wget -O $deb_file $deb_url
+	wget $deb_url -O $deb_file
 done
 
 sudo dpkg -i /tmp/stlink_1.7.0-1_amd64.deb

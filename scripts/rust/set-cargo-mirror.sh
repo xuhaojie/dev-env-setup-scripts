@@ -1,6 +1,6 @@
 #!/bin/bash
 
-target_file=/home/$USER/.cargo/config
+
 
 mirror_comments=("crates-io" "中国科学技术大学" "上海交通大学" "清华大学" "rustcc社区")
 mirror_names=("crates-io" "ustc" "sjtu" "tuna" "rustcc")
@@ -8,7 +8,7 @@ mirror_urls=("https://github.com/rust-lang/crates.io-index" "https://mirrors.ust
 
 if [ $# -eq 0 ]; then
 	echo "Please select your cargo mirror"
-	for i in "${!mirror_names[@]}"; do
+	for i in "${!mirror_comments[@]}"; do
 		echo "($i) ${mirror_names[$i]}"
 	done
 	read input
@@ -37,16 +37,23 @@ else
 	echo "change mirror to $mirror_name"
 fi
 
-mv $target_file $target_file.bak
+target_file=/home/$USER/.cargo/config
+backup_file=$target_file.bak
+
+if [ -f $backup_file ]; then 
+	rm $backup_file
+fi
+
+mv $target_file $backup_file
 
 #for mirror in ${docker_registry_mirrors[*]}
 for i in "${!mirror_urls[@]}"
 do
-	echo -e "[source.${mirror_names[$i]}]" | sudo tee -a $target_file
-	echo -e "registry=\"${mirror_urls[$i]}\"" | sudo tee -a $target_file
+	echo -e "[source.${mirror_names[$i]}]" | tee -a $target_file
+	echo -e "registry=\"${mirror_urls[$i]}\"" | tee -a $target_file
 	if [ $i -eq 0 ] && [ "$mirror_name" != "" ]
 	then
-		echo -e "replace-with='$mirror_name'" | sudo tee -a $target_file
+		echo -e "replace-with='$mirror_name'" | tee -a $target_file
 	fi
 done
 
