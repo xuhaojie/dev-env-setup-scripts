@@ -1,33 +1,45 @@
 #!/bin/bash
 
-function check_root(){
-	if [[ $EUID -ne 0 ]] 
-	then
-		echo "Error:This script must be run as root!" 1>&2
-		exit 1
-	fi
-}
+if [[ $EUID -ne 0 ]] 
+then
+	echo "Error:This script must be run as root!" 1>&2
+#	exit 1
+fi
+
 target_file=/home/$USER/.cargo/config
 
 mirror_comments=("crates-io" "中国科学技术大学" "上海交通大学" "清华大学" "rustcc社区")
 mirror_names=("crates-io" "ustc" "sjtu" "tuna" "rustcc")
 mirror_urls=("https://github.com/rust-lang/crates.io-index" "https://mirrors.ustc.edu.cn/crates.io-index" "https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index" "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git" "https://code.aliyun.com/rustcc/crates.io-index.git")
 
-echo "Please select your cargo mirror"
-for i in "${!mirror_comments[@]}"
-do
-	echo "($i) ${mirror_comments[$i]}"
-done
+if [ $# -eq 0 ]; then
+	echo "Please select your cargo mirror"
+	for i in "${!mirror_names[@]}"; do
+		echo "($i) ${mirror_names[$i]}"
+	done
+	read input
 
-read input
+else
+	input=$1
+fi
 
-case $input in
-	1|2|3|4) mirror_name=${mirror_names[$input]};;
-	*) mirror_name="";;
-esac
+if [[ $input -ge 0 ]] && [[ $input -lt ${#mirror_names[@]} ]]; then
+	mirror_name=${mirror_names[$input]}
+	mirror_url=${mirror_urls[$input]}
+else
+	for i in "${!mirror_names[@]}"; do
+		if [[ $input == ${mirror_names[$i]} ]]; then
+			mirror_name=${mirror_names[$i]}
+			mirror_url=${mirror_urls[$i]}
+			break
+		fi
+	done
+fi
 
-if [[ $input -ne 0 ]]
-then
+if [[ $mirror_name == "" ]]; then
+	echo "bad mirror"
+	exit 1
+else 
 	echo "change mirror to $mirror_name"
 fi
 
