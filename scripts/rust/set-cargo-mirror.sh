@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 mirror_comments=("crates-io" "中国科学技术大学" "上海交通大学" "清华大学" "rustcc社区")
 mirror_names=("crates-io" "ustc" "sjtu" "tuna" "rustcc")
 mirror_urls=("https://github.com/rust-lang/crates.io-index" "https://mirrors.ustc.edu.cn/crates.io-index" "https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index" "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git" "https://code.aliyun.com/rustcc/crates.io-index.git")
@@ -17,17 +15,21 @@ else
 	input=$1
 fi
 
-if [[ $input -ge 0 ]] && [[ $input -lt ${#mirror_names[@]} ]]; then
-	mirror_name=${mirror_names[$input]}
-	mirror_url=${mirror_urls[$input]}
-else
-	for i in "${!mirror_names[@]}"; do
-		if [[ $input == ${mirror_names[$i]} ]]; then
-			mirror_name=${mirror_names[$i]}
-			mirror_url=${mirror_urls[$i]}
-			break
-		fi
-	done
+mirror_match=0
+for i in "${!mirror_names[@]}"; do
+	if [[ $input == ${mirror_names[$i]} ]]; then
+		mirror_name=${mirror_names[$i]}
+		mirror_url=${mirror_urls[$i]}
+		mirror_match=1
+		break
+	fi
+done
+
+if [ $mirror_match -eq 0 ]; then 
+	if [[ $input -ge 0 ]] && [[ $input -lt ${#mirror_names[@]} ]]; then
+		mirror_name=${mirror_names[$input]}
+		mirror_url=${mirror_urls[$input]}
+	fi
 fi
 
 if [[ $mirror_name == "" ]]; then

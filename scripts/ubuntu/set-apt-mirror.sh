@@ -20,17 +20,21 @@ else
 	input=$1
 fi
 
-if [[ $input -ge 0 ]] && [[ $input -lt ${#mirror_names[@]} ]]; then
-	mirror_name=${mirror_names[$input]}
-	mirror_url=${mirror_urls[$input]}
-else
-	for i in "${!mirror_names[@]}"; do
-		if [[ $input == ${mirror_names[$i]} ]]; then
-			mirror_name=${mirror_names[$i]}
-			mirror_url=${mirror_urls[$i]}
-			break
-		fi
-	done
+mirror_match=0
+for i in "${!mirror_names[@]}"; do
+	if [[ $input == ${mirror_names[$i]} ]]; then
+		mirror_name=${mirror_names[$i]}
+		mirror_url=${mirror_urls[$i]}
+		mirror_match=1
+		break
+	fi
+done
+
+if [ $mirror_match -eq 0 ]; then 
+	if [[ $input -ge 0 ]] && [[ $input -lt ${#mirror_names[@]} ]]; then
+		mirror_name=${mirror_names[$input]}
+		mirror_url=${mirror_urls[$input]}
+	fi
 fi
 
 if [[ $mirror_name == "" ]]; then

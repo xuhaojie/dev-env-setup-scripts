@@ -13,7 +13,7 @@ sudo mv $target_file $target_file.bak
 mirrors=("https://registry.docker-cn.com" "http://hub-mirror.c.163.com" "https://docker.mirrors.ustc.edu.cn")
 
 echo -e -n "{\n\t\"registry-mirrors\" : [" | sudo tee -a $target_file
-#for mirror in ${docker_registry_mirrors[*]}
+
 for i in "${!mirrors[@]}"
 do
 	if [ $i -eq 0 ]
