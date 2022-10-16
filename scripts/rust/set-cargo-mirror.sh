@@ -37,7 +37,7 @@ else
 	echo "change mirror to $mirror_name"
 fi
 
-sudo mv $target_file $target_file.bak
+mv $target_file $target_file.bak
 
 #for mirror in ${docker_registry_mirrors[*]}
 for i in "${!mirror_urls[@]}"
