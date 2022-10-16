@@ -1,3 +1,4 @@
+#!/bin/bash
 ./install-rust.sh
 if [ $# -eq 0 ]; then
 ./set-cargo-mirror.sh tuna

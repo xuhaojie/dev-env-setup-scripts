@@ -74,6 +74,8 @@ echo "deb-src $mirror_url $dist-proposed main restricted universe multiverse" | 
 echo "deb $mirror_url $dist-backports main restricted universe multiverse" | sudo tee -a $target_file
 echo "deb-src $mirror_url $dist-backports main restricted universe multiverse" | sudo tee -a $target_file
 
+sudo apt update
+
 echo "done."
 
 

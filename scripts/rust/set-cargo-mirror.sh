@@ -6,8 +6,8 @@ mirror_urls=("https://github.com/rust-lang/crates.io-index" "https://mirrors.ust
 
 if [ $# -eq 0 ]; then
 	echo "Please select your cargo mirror"
-	for i in "${!mirror_comments[@]}"; do
-		echo "($i) ${mirror_names[$i]}"
+	for i in "${!mirror_names[@]}"; do
+		echo "($i) ${mirror_names[$i]} ${mirror_urls[$i]}"
 	done
 	read input
 
@@ -53,8 +53,7 @@ for i in "${!mirror_urls[@]}"
 do
 	echo -e "[source.${mirror_names[$i]}]" | tee -a $target_file
 	echo -e "registry=\"${mirror_urls[$i]}\"" | tee -a $target_file
-	if [ $i -eq 0 ] && [ "$mirror_name" != "" ]
-	then
+	if [ $i -eq 0 ] && [ "$mirror_name" != "" ]; then
 		echo -e "replace-with='$mirror_name'" | tee -a $target_file
 	fi
 done
