@@ -1,14 +1,10 @@
 #!/bin/bash
 
-function check_root(){
-	if [[ $EUID -ne 0 ]] 
-	then
-		echo "Error:This script must be run as root!" 1>&2
-		exit 1
-	fi
-}
-
-#check_root
+if [[ $EUID -ne 0 ]] 
+then
+	echo "Error:This script must be run as root!" 1>&2
+	exit 1
+fi
 
 mirror_names=("cn.archive.ubuntu.com" "aliyun" "tuna" "163" "ustc")
 mirror_urls=("http://cn.archive.ubuntu.com/ubuntu/" "http://mirrors.aliyun.com/ubuntu/" "https://mirrors.tuna.tsinghua.edu.cn/ubuntu/" "http://mirrors.163.com/ubuntu/" "https://mirrors.ustc.edu.cn/ubuntu/")
