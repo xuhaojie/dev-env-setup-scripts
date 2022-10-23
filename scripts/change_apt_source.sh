@@ -8,33 +8,41 @@ function check_root(){
 	fi
 }
 
-lsb_release=`lsb_release -c`
-
-dist=${lsb_release#*Codename:[[:space:]]}
-
-echo $dist
-
-
 mirror_names=("cn.archive.ubuntu.com" "aliyun" "tuna" "163" "ustc")
 mirror_urls=("http://cn.archive.ubuntu.com/ubuntu/" "http://mirrors.aliyun.com/ubuntu/" "https://mirrors.tuna.tsinghua.edu.cn/ubuntu/" "http://mirrors.163.com/ubuntu/" "https://mirrors.ustc.edu.cn/ubuntu/")
 
-echo "Please select your apt mirror"
-for i in "${!mirror_names[@]}"
-do
-	echo "($i) ${mirror_names[$i]}"
-done
+if [ $# -eq 0 ]; then
 
-read input
+	echo "Please select your apt mirror"
+	for i in "${!mirror_names[@]}"
+	do
+		echo "($i) ${mirror_names[$i]}"
+	done
+
+	read input
 
 case $input in
 	1|2|3|4) url=${mirror_urls[$input]};;
 	*) url="";;
 esac
 
-if [[ $input -ne 0 ]]
-then
+else
+	directory=$1
+fi
+
+
+
+if [[ $input -ne 0 ]]; then
 	echo "change mirror to $mirror_name"
 fi
+
+
+lsb_release=`lsb_release -c`
+
+dist=${lsb_release#*Codename:[[:space:]]}
+
+echo $dist
+
 
 target_file=/etc/apt/source.list
 
