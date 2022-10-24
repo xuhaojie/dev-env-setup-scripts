@@ -18,7 +18,7 @@ sudo apt install -f -y
 # stm32 discovery boards, with onboard st/linkv1 ie, STM32VL.
 target_file=/etc/udev/rules.d/49-stlinkv1.rules
 if [ ! -f $target_file ]; then
-	echo "SUBSYSTEMS==\"us\", ATTRS{idVendor}==\"0483\", ATTRS{idProduct}==\"3744\", MODE=\"660\", GROUP=\"plugdev\", TAG+=\"uaccess\", SYMLINK+=\"stlinkv1_%n\"" | sudo tee -a $target_file
+	echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"0483\", ATTRS{idProduct}==\"3744\", MODE=\"660\", GROUP=\"plugdev\", TAG+=\"uaccess\", SYMLINK+=\"stlinkv1_%n\"" | sudo tee -a $target_file
 fi
 # stm32 discovery boards, with onboard st/linkv2 ie, STM32L, STM32F4.
 target_file=/etc/udev/rules.d/49-stlinkv2.rules
