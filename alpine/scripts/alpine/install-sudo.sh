@@ -16,7 +16,5 @@ apk add sudo
 echo "add $1 to group wheel"
 addgroup $1 wheel
 
-
-
 sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g' /etc/sudoers
 
