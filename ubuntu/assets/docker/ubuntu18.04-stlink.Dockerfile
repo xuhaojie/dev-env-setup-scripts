@@ -16,3 +16,6 @@ RUN git clone -b v1.7.0 https://github.com/stlink-org/stlink.git && \
     make release && \
     make install && \
     ldconfig
+
+# build 
+# docker build -t ubuntu-stlink:18.04 -f ./assets/docker/alpine-stlink.Dockerfile .
