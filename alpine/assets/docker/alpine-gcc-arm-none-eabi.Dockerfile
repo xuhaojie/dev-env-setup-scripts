@@ -22,7 +22,7 @@ RUN apk add gcc-arm-none-eabi
 # docker run --rm -it alpine-gcc-arm-none-eabi
 
 # verify
-# arm-none-eabi-gcc -v
+# docker run --rm alpine-gcc-arm-none-eabi arm-none-eabi-gcc -v
 
 # 清理已经停止的容器. 
 # docker rm -v $(docker ps --all --quiet --filter 'status=exited') 
