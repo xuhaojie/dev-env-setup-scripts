@@ -15,7 +15,6 @@ for i in "${!lib_names[@]}"; do
 	fi
 done
 
-
 echo "install stlink..."
 sudo ./install-stlink.sh
 
