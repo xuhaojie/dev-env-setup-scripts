@@ -1,9 +1,6 @@
-FROM alpine
-#RUN apk add stlink --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted
+FROM ubuntu:18.04
 
-RUN apk add stlink --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted
-
-RUN apk add make gcc musl-dev libusb-dev git --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted
+LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
 ENV TARGET_DIR=/tmp/stm8flash
 # fetch code
@@ -43,8 +40,6 @@ ENV LIB_NAME=STM8L15x-16x-05x-AL31-L_StdPeriph_Lib
 ENV TARGET_DIR=$LIB_DIR/$LIB_NAME
 RUN echo "install $LIB_NAME to $TARGET_DIR"
 RUN git clone $BASE_URL/$LIB_NAME $TARGET_DIR
-
-
 
 # build 
 # docker build -t alpine-stm8-dev -f ./assets/docker/stm8-dev.Dockerfile .

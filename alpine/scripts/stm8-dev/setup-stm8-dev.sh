@@ -9,7 +9,7 @@ echo "install std periph libs..."
 for i in "${!lib_names[@]}"; do
 	lib_name=${lib_names[$i]}
 	echo "install  $i/$lib_count $lib_name"
-	target_dir=$HOME/$lib_name
+	target_dir=/usr/local/$lib_name
 	if [ ! -d $target_dir  ]; then
 		git clone $base_url/$lib_name $target_dir
 	fi

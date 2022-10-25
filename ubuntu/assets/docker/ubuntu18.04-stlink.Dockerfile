@@ -18,4 +18,6 @@ RUN git clone -b v1.7.0 https://github.com/stlink-org/stlink.git && \
     ldconfig
 
 # build 
-# docker build -t ubuntu-stlink:18.04 -f ./assets/docker/ubuntu18.04-stlink.Dockerfile .
+# docker build -t ubuntu-stlink -f ./assets/docker/ubuntu18.04-stlink.Dockerfile .
+# 清理已经停止的容器. 
+# docker rm -v $(docker ps --all --quiet --filter 'status=exited') 
