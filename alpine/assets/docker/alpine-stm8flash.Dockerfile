@@ -6,22 +6,14 @@ LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 RUN apk update
 
-#RUN apk add stlink --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted
-
+# install packages
 RUN apk add make gcc musl-dev libusb-dev git
 
-ENV TARGET_DIR=/tmp/stm8flash
-
-# fetch code
+# install stm8flash
+ARG TARGET_DIR=/tmp/stm8flash
 RUN git clone https://github.com/vdudouyt/stm8flash.git $TARGET_DIR
-
-# change dir
 WORKDIR $TARGET_DIR
-
-# build
 RUN make
-
-# install
 RUN make install
 
 # clean

@@ -2,21 +2,15 @@ FROM ubuntu:18.04
 
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
-RUN apt update
-RUN apt install -y git make gcc pkg-config libusb-1.0 libusb-1.0-0-dev
+RUN apt-get update
+RUN apt-get install -y git make gcc pkg-config libusb-1.0 libusb-1.0-0-dev
 
-ENV TARGET_DIR=/tmp/stm8flash
-# fetch code
+# install stm8flash
+ARG TARGET_DIR=/tmp/stm8flash
 RUN git clone https://github.com/vdudouyt/stm8flash.git $TARGET_DIR
-
-# change dir
 WORKDIR $TARGET_DIR
-
-# build
 RUN make
-# install
 RUN make install
-# clean
 WORKDIR /
 RUN rm -rf $TARGET_DIR
 
