@@ -27,7 +27,7 @@ RUN rm -rf $TARGET_DIR
 # docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO ubuntu18.04-stm8flash 
 
 # verify in docker
-# stm8flash -V
+# docker run --rm --device /dev/mem:/dev/men --cap-add SYS_RAWIO ubuntu18.04-stm8flash stm8flash -V
 
 # 清理已经停止的容器. 
 # docker rm -v $(docker ps --all --quiet --filter 'status=exited') 
