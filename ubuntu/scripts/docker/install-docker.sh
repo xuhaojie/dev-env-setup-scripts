@@ -12,6 +12,14 @@ check_root
 
 sudo apt install docker.io
 
-sudo gpasswd -a ${USER} docker
+if [ $# -eq 0 ]; then
+	echo "you can speicfy user name add to docker group"
+else
+	echo "add user $1 to group docker"
+	addgroup $1 docker
+fi
 
+service docker start
 
+# verify
+docker ps

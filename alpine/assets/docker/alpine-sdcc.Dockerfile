@@ -1,5 +1,7 @@
 FROM alpine
 
+LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
+
 # change apk source
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 RUN apk update
@@ -23,8 +25,6 @@ ENV TARGET_FILE=/etc/profile
 RUN echo export PATH="/opt/sdcc-4.2.0/bin:\$PATH" | tee -a $TARGET_FILE
 
 RUN source $TARGET_FILE
-
-#RUN apk add stlink --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted
 
 #RUN apk add make gcc musl-dev libusb-dev git --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted
 

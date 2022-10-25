@@ -6,16 +6,19 @@ then
 	exit 1
 fi
 
-if [ $# -eq 0 ]; then
-	echo "please speicfy user name to setup"
-	exit 1
-fi
-
 apk add docker
 rc-update add docker boot
 
-addgroup $1 docker
+if [ $# -eq 0 ]; then
+	echo "you can speicfy user name add to docker group"
+else
+	echo "add user $1 to group docker"
+	addgroup $1 docker
+fi
 
 service docker start
 
 echo "please reboot to take effect"
+
+# verify
+docker ps

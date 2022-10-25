@@ -1,7 +1,10 @@
 FROM alpine-sdcc
 
+LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
+
 #RUN apk add stlink --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted
 #RUN apk add stlink
+RUN apk add git
 
 ENV BASE_URL=https://github.com/xuhaojie
 ENV LIB_DIR=/usr/local

@@ -1,5 +1,7 @@
 FROM alpine
 
+LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
+
 RUN apk add stlink gcc-arm-none-eabi openocd --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted
 
 # build 

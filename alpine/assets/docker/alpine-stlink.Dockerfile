@@ -1,5 +1,7 @@
 FROM alpine
 
+LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
+
 # change apk source
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 RUN apk update

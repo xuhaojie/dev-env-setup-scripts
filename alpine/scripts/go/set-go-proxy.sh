@@ -38,12 +38,12 @@ else
 	echo "change mirror to $mirror_name"
 fi
 
-export GO111MODULE="on"
-#go env -w GO111MODULE="on"
+#export GO111MODULE="on"
+go env -w GO111MODULE="on"
 #echo "export GO111MODULE="on"" >> ~/.profile && source ~/.profile
 
-export GOPROXY=$mirror_url
-#go env -w GOPROXY=$mirror_url
+#export GOPROXY=$mirror_url
+go env -w GOPROXY=$mirror_url
 #echo "export GOPROXY=$mirror_url" >> ~/.profile && source ~/.profile
 
 target_file=/home/$USER/.config/go/env
