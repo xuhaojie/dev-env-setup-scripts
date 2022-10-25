@@ -17,3 +17,5 @@ rc-update add docker boot
 addgroup $1 docker
 
 service docker start
+
+echo "please reboot to take effect"

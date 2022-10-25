@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apk add gcompat libstdc++6 libuser bash
+apk add gcompat libstdc++6 libuser
 
 target_file=/etc/ssh/sshd_config
 

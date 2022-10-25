@@ -21,3 +21,5 @@ echo tun >>/etc/modules
 echo $1:100000:65536 >/etc/subuid
 
 echo $1:100000:65536 >/etc/subgid
+
+echo "please reboot to take effect"

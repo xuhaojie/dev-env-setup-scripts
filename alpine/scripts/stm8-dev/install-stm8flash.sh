@@ -13,3 +13,6 @@ cd $target_dir
 make
 sudo make install
 cd $pre_pwd
+
+# verify in docker
+stm8flash -V

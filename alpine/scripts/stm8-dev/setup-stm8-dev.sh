@@ -1,4 +1,5 @@
 #!/bin/bash
+
 base_url=https://github.com/xuhaojie
 
 lib_names=("STM8S_StdPeriph_Lib" "STM8L10x_StdPeriph_Lib" "STM8TL5x_StdPeriph_Lib" "STM8L15x-16x-05x-AL31-L_StdPeriph_Lib")
@@ -15,8 +16,15 @@ for i in "${!lib_names[@]}"; do
 	fi
 done
 
-echo "install stlink..."
-sudo ./install-stlink.sh
+#echo "install stlink..."
+#sudo ./install-stlink.sh
+
+echo "install sdcc..."
+sudo ./install-sdcc.sh
 
 echo "install stm8flash..."
 sudo ./install-stm8flash.sh
+
+# verify in docker
+sdcc -v
+stm8flash -V
