@@ -2,12 +2,12 @@ FROM ubuntu:18.04
 
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
-ARG target_file=/tmp/rustup.rs
+ARG TARGET_FILE=/tmp/rustup.rs
 RUN apt-get update \
 	&& apt-get -y install  curl\
-	&& curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o $target_file \
-	&& chmod +x $target_file \
-	&& $target_file -y \
+	&& curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o $TARGET_FILE \
+	&& chmod +x $TARGET_FILE \
+	&& $TARGET_FILE -y \
 	&& source "$HOME/.cargo/env"
 
 

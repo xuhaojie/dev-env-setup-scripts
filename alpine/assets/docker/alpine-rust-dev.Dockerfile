@@ -2,14 +2,14 @@ FROM alpine
 
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
-ARG target_file=/tmp/rustup.rs
+ARG TARGET_FILE=/tmp/rustup.rs
 
 RUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
 	&& apk update \
 	&& apk add curl \
-	&& curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o $target_file \
-	&& chmod +x $target_file \
-	&& $target_file -y \
+	&& curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o $TARGET_FILE \
+	&& chmod +x $TARGET_FILE \
+	&& $TARGET_FILE -y \
 	&& source "$HOME/.cargo/env"
 
 # build 
