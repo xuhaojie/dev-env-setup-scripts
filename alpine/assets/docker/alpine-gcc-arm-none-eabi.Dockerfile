@@ -3,11 +3,9 @@ FROM alpine
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
 # change apk source
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
-RUN apk update
-
-# install package
-RUN apk add gcc-arm-none-eabi
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
+	&& apk update \
+	&& apk add gcc-arm-none-eabi
 
 # build 
 # docker build -t alpine-gcc-arm-none-eabi -f ./assets/docker/alpine-gcc-arm-none-eabi.Dockerfile .

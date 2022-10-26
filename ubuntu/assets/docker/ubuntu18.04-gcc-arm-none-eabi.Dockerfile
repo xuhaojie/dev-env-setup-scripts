@@ -2,8 +2,8 @@ FROM ubuntu:18.04
 
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
-RUN apt-get update
-RUN	apt-get -y install gcc-arm-none-eabi
+RUN apt-get update \
+	&& apt-get -y install gcc-arm-none-eabi
 
 # build 
 # docker build -t ubuntu-gcc-arm-none-eabi -f ./assets/docker/ubuntu18.04-gcc-arm-none-eabi.Dockerfile .

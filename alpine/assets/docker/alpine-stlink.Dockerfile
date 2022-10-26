@@ -3,11 +3,9 @@ FROM alpine
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
 # change apk source
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
-RUN apk update
-
-# install stlink
-RUN apk add stlink
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
+	&& apk update \
+	&& apk add stlink
 
 # build 
 # docker build -t alpine-stlink -f ./assets/docker/alpine-stlink.Dockerfile .
