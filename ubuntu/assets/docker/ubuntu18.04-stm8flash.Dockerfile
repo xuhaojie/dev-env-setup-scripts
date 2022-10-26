@@ -11,16 +11,18 @@ RUN apt-get update \
 	&& make \
 	&& make install \
 	&& cd  / \
-	&& rm -rf $TARGET_DIR
+	&& rm -rf $TARGET_DIR \
+	&& apt-get remove -y git make gcc pkg-config libusb-1.0-0-dev \
+	&& apt-get autoclean 
 
 # build 
-# docker build -t ubuntu18.04-stm8flash -f ./assets/docker/ubuntu18.04-stm8flash.Dockerfile .
+# docker build -t hodge/ubuntu18.04-stm8flash -f ./assets/docker/ubuntu18.04-stm8flash.Dockerfile .
 
 # run
-# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO ubuntu18.04-stm8flash 
+# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO hodge/ubuntu18.04-stm8flash 
 
 # verify in docker
-# docker run --rm --device /dev/mem:/dev/men --cap-add SYS_RAWIO ubuntu18.04-stm8flash stm8flash -V
+# docker run --rm --device /dev/mem:/dev/men --cap-add SYS_RAWIO hodge/ubuntu18.04-stm8flash stm8flash -V
 
 # 清理已经停止的容器. 
 # docker rm -v $(docker ps --all --quiet --filter 'status=exited') 

@@ -17,13 +17,13 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 
 
 # build 
-# docker build -t alpine-stm8flash -f ./assets/docker/alpine-stm8flash.Dockerfile .
+# docker build -t hodge/alpine-stm8flash -f ./assets/docker/alpine-stm8flash.Dockerfile .
 
 # run
-# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO alpine-stm8flash 
+# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO hodge/alpine-stm8flash 
 
 # verify in docker
-# docker run --rm alpine-stm8flash stm8flash -V
+# docker run --rm hodge/alpine-stm8flash stm8flash -V
 
 # 清理已经停止的容器. 
 # docker rm -v $(docker ps --all --quiet --filter 'status=exited') 

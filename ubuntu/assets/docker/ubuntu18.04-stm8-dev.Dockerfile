@@ -21,13 +21,13 @@ RUN apt-get update \
 
 
 # build 
-# docker build -t ubuntu-stm8-dev -f ./assets/docker/ubuntu18.04-stm8-dev.Dockerfile .
+# docker build -t hodge/ubuntu-stm8-dev -f ./assets/docker/ubuntu18.04-stm8-dev.Dockerfile .
 
 # run
-# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO  ubuntu-stm8-dev 
+# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO hodge/ubuntu-stm8-dev 
 
 # verify in docker
-# docker run --rm ubuntu-stm8-dev stm8flash -V && sdcc -v
+# docker run --rm hodge/ubuntu-stm8-dev stm8flash -V && sdcc -v
 
 # ls /usr/local/STM8L10x_StdPeriph_Lib
 # ls /usr/local/STM8S_StdPeriph_Lib

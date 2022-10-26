@@ -8,10 +8,10 @@ RUN apt-get update \
 ENTRYPOINT ["/bin/bash"]
 
 # build 
-# docker build -t ubuntu18.04-openwrt-15.05.1-build -f ./assets/docker/ubuntu18.04-openwrt-15.05.1-build.Dockerfile .
+# docker build -t hodge/ubuntu18.04-openwrt-15.05.1-build -f ./assets/docker/ubuntu18.04-openwrt-15.05.1-build.Dockerfile .
 
 # run
-# docker run --rm -it ubuntu18.04-openwrt-15.05.1-build
+# docker run --rm -it hodge/ubuntu18.04-openwrt-15.05.1-build
 
 # verify
 #

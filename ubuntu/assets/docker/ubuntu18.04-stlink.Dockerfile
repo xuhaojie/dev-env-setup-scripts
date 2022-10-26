@@ -12,13 +12,13 @@ RUN apt-get update \
     ldconfig
 
 # build 
-# docker build -t ubuntu-stlink -f ./assets/docker/ubuntu18.04-stlink.Dockerfile .
+# docker build -t hodge/ubuntu-stlink -f ./assets/docker/ubuntu18.04-stlink.Dockerfile .
 
 # run
-# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO  ubuntu-stlink 
+# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO hodge/ubuntu-stlink 
 
 # verify in docker
-# docker run --rm ubuntu-stlink st-info --version
+# docker run --rm hodge/ubuntu-stlink st-info --version
 
 # 清理已经停止的容器. 
 # docker rm -v $(docker ps --all --quiet --filter 'status=exited') 

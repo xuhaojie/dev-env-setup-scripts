@@ -16,13 +16,13 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 	&& source $TARGET_FILE
 
 # build 
-# docker build -t alpine-sdcc -f ./assets/docker/alpine-sdcc.Dockerfile .
+# docker build -t hodge/alpine-sdcc -f ./assets/docker/alpine-sdcc.Dockerfile .
 
 # run
-# docker run --rm -it alpine-sdcc
+# docker run --rm -it hodge/alpine-sdcc
 
 # verify in docker
-# docker run --rm alpine-sdcc /opt/sdcc-4.2.0/bin/sdcc -v
+# docker run --rm hodge/alpine-sdcc /opt/sdcc-4.2.0/bin/sdcc -v
 
 # 清理已经停止的容器. 
 # docker rm -v $(docker ps --all --quiet --filter 'status=exited') 

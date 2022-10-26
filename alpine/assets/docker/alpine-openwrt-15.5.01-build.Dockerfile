@@ -13,13 +13,13 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 	&& ln -s /usr/lib/libncurses.so /usr/lib/libtinfo.so 
 
 # build 
-# docker build -t alpine-openwrt-15.5.01-build -f ./assets/docker/alpine-openwrt-15.5.01-build.Dockerfile .
+# docker build -t hodge/alpine-openwrt-15.5.01-build -f ./assets/docker/alpine-openwrt-15.5.01-build.Dockerfile .
 
 # run
-# docker run --rm -it alpine-openwrt-15.5.01-build
+# docker run --rm -it hodge/alpine-openwrt-15.5.01-build
 
 # verify in docker
-# docker run --rm alpine-openwrt-15.5.01-build /bin/ash
+# docker run --rm hodge/alpine-openwrt-15.5.01-build /bin/ash
 
 # 清理已经停止的容器. 
 # docker rm -v $(docker ps --all --quiet --filter 'status=exited') 

@@ -8,10 +8,10 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 	&& apk add stlink
 
 # build 
-# docker build -t alpine-stlink -f ./assets/docker/alpine-stlink.Dockerfile .
+# docker build -t hodge/alpine-stlink -f ./assets/docker/alpine-stlink.Dockerfile .
 
 # run
-# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO alpine-stlink 
+# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO hodge/alpine-stlink 
 
 # verify in docker
-# docker run --rm alpine-stlink st-info --version
+# docker run --rm hodge/alpine-stlink st-info --version
