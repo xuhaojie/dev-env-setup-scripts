@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apk add gcompat libstdc++6 libuser
+apk add openrc openssh-server gcompat libstdc++ bash
 
 target_file=/etc/ssh/sshd_config
 
