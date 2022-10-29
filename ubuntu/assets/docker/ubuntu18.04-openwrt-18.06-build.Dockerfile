@@ -6,7 +6,6 @@ RUN apt-get update \
 	&& apt-get install -y gcc g++ binutils patch bzip2 flex bison make autoconf gettext texinfo unzip sharutils subversion libncurses5-dev ncurses-term zlib1g-dev libssl-dev  gawk wget python git xz-utils
 
 RUN useradd -m -d /home/op -p 123456 op 
-
 USER op
 
 WORKDIR /home/op

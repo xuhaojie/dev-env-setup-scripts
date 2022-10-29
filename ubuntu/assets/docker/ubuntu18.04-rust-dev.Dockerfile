@@ -3,6 +3,7 @@ FROM ubuntu:18.04
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
 ARG TARGET_FILE=/tmp/rustup.rs
+
 RUN apt-get update \
 	&& apt-get -y install  curl\
 	&& curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o $TARGET_FILE \
