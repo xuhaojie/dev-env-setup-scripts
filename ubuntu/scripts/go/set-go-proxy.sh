@@ -4,7 +4,7 @@ mirror_names=("goproxy.cn" "golang.com.cn")
 mirror_urls=("https://goproxy.cn,direct" "https://proxy.golang.com.cn,direct")
 
 if [ $# -eq 0 ]; then
-	echo "Please select your cargo mirror"
+	echo "Please select your go proxy"
 	for i in "${!mirror_names[@]}"; do
 		echo "($i) ${mirror_names[$i]} ${mirror_urls[$i]}"
 	done
@@ -53,7 +53,9 @@ if [ -f $backup_file ]; then
 	rm $backup_file
 fi
 
-mv $target_file $backup_file
+if [ -f $target_file ]; then 
+	mv $target_file $backup_file
+fi
 
 #for mirror in ${docker_registry_mirrors[*]}
 

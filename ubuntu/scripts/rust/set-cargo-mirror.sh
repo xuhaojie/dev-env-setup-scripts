@@ -46,7 +46,9 @@ if [ -f $backup_file ]; then
 	rm $backup_file
 fi
 
-mv $target_file $backup_file
+if [ -f $target_file ]; then 
+	mv $target_file $backup_file
+fi
 
 #for mirror in ${docker_registry_mirrors[*]}
 for i in "${!mirror_urls[@]}"

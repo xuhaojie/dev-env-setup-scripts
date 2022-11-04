@@ -57,11 +57,12 @@ target_file=/etc/apk/repositories
 backup_file=$target_file.bak
 
 if [ -f $backup_file ]; then 
-	rm  $backup_file
+	rm $backup_file
 fi
 
-mv $target_file $backup_file
-
+if [ -f $target_file ]; then 
+	sudo mv $target_file $backup_file
+fi
 
 echo "$mirror_url/v$dist/main" | tee -a $target_file
 echo "$mirror_url/v$dist/community" | tee -a $target_file

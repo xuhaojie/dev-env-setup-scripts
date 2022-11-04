@@ -57,7 +57,9 @@ if [ -f $backup_file ]; then
 	rm  $backup_file
 fi
 
-sudo mv $target_file $backup_file
+if [ -f $target_file ]; then 
+	sudo mv $target_file $backup_file
+fi
 
 echo "deb $mirror_url $dist main restricted universe multiverse" | sudo tee -a $target_file
 echo "deb-src $mirror_url $dist main restricted universe multiverse" | sudo tee -a $target_file
