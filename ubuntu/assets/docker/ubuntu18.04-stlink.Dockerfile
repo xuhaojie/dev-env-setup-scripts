@@ -15,10 +15,15 @@ RUN apt-get update \
 # docker build -t hodge/ubuntu-stlink -f ./assets/docker/ubuntu18.04-stlink.Dockerfile .
 
 # run
-# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO hodge/ubuntu-stlink 
+# docker run --rm -it --privileged  hodge/ubuntu-stlink 
 
 # verify in docker
 # docker run --rm hodge/ubuntu-stlink st-info --version
 
 # 清理已经停止的容器. 
 # docker rm -v $(docker ps --all --quiet --filter 'status=exited') 
+
+
+
+	
+#docker run -t -i --device=/dev/ttyUSB0 ubuntu bash
