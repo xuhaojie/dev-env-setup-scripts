@@ -1,6 +1,5 @@
 
-FROM nvidia/cuda:11.7.0-base-ubuntu20.04
-#FROM nvidia/cuda:11.7.0-runtime-ubuntu20.04
+FROM ubuntu:20.04
 
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
@@ -27,15 +26,14 @@ RUN apt update \
 ENTRYPOINT ["/bin/bash"]
 
 # build 
-# docker build -t hodge/ubuntu20.04-cuda-pytorch-dev-11.7.0 -f ./assets/docker/ubuntu20.04-cuda-pytorch-dev-11.7.0.Dockerfile .
+# docker build -t hodge/ubuntu20.04-pytorch-dev -f ./assets/docker/ubuntu20.04-pytorch-dev.Dockerfile .
 
 # run
-# docker run --rm -it --gpus all hodge/ubuntu20.04-cuda-pytorch-dev-11.7.0
+# docker run --rm -it hodge/ubuntu20.04-pytorch-dev
 
 # verify
-# docker run --rm --gpus all hodge/ubuntu20.04-cuda-pytorch-dev-11.7.0 nvidia-smi
+# docker run --rm -it hodge/ubuntu20.04-pytorch-dev phton3
 
-#docker run -it --rm --gpus all nvidia/cuda:11.7.0-devel-ubuntu20.04
-
-#import torch
-#torch.cuda.is_available()
+# import torch
+# x = torch.rand(5, 3)
+# print(x)
