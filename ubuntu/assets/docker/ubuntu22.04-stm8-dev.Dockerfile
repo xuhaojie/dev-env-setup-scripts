@@ -7,7 +7,7 @@ ARG BASE_URL=https://github.com/xuhaojie
 ARG LIB_DIR=/usr/local
 
 RUN apt-get update \
-	&& apt-get install -y git make gcc pkg-config libusb-1.0-0-dev sdcc\
+	&& apt-get install -y git make gcc pkg-config libusb-1.0-0-dev sdcc \
 	&& git clone https://github.com/vdudouyt/stm8flash.git $TARGET_DIR \
 	&& cd $TARGET_DIR \
 	&& make \
@@ -24,10 +24,10 @@ RUN apt-get update \
 # docker build -t hodge/ubuntu22.04-stm8-dev -f ./assets/docker/ubuntu22.04-stm8-dev.Dockerfile .
 
 # run
-# docker run --rm -it --privileged  hodge/ubuntu-stm8-dev 
+# docker run --rm -it --privileged  hodge/ubuntu22.04-stm8-dev 
 
 # verify in docker
-# docker run --rm hodge/ubuntu-stm8-dev stm8flash -V && sdcc -v
+# docker run --rm hodge/ubuntu22.04-stm8-dev stm8flash -V && sdcc -v
 
 # ls /usr/local/STM8L10x_StdPeriph_Lib
 # ls /usr/local/STM8S_StdPeriph_Lib
