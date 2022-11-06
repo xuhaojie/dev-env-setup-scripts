@@ -8,7 +8,7 @@ RUN apk add stlink openocd --update-cache --repository http://mirrors.ustc.edu.c
 # docker build -t hodge/alpine-stm32-dev -f ./assets/docker/alpine-stm32-dev.Dockerfile .
 
 # run
-# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO hodge/alpine-stm32-dev 
+# docker run --rm -it --privileged hodge/alpine-stm32-dev 
 
 # verify in docker
 # docker run --rm -it hodge/alpine-stm32-dev st-info
