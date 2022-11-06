@@ -5,6 +5,22 @@
 #sudo apt-get install sdcc sdcc-doc sdcc-libraries sdcc-ucsim
 #sudo apt-get install build-essential pkg-config autoconf automake libtool libusb-dev libusb-1.0-0-dev libhidapi-dev
 
+echo "install stm8flash..."
+sudo apt install -y build-essential  pkg-config libusb-1.0-0-dev
+pre_pwd=${PWD}
+
+target_dir="/tmp/stm8flash"
+while [ ! -d $target_dir  ]
+do 
+	rmdir $target_dir
+	git clone https://github.com/vdudouyt/stm8flash.git $target_dir
+done
+cd $target_dir
+make
+sudo make install
+cd $pre_pwd
+
+echo "install sdcc..."
 sudo apt install -y sdcc
 
 base_url=https://github.com/xuhaojie
@@ -23,8 +39,3 @@ for i in "${!lib_names[@]}"; do
 	fi
 done
 
-echo "install stlink..."
-./install-stlink.sh
-
-echo "install stm8flash..."
-./install-stm8flash.sh
