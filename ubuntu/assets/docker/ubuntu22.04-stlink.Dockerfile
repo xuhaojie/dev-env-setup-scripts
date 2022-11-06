@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
@@ -6,7 +6,7 @@ RUN apt-get update \
 	&& apt-get -y install stlink-tools
 
 # build 
-# docker build -t hodge/ubuntu20.04-stlink -f ./assets/docker/ubuntu20.04-stlink.Dockerfile .
+# docker build -t hodge/ubuntu22.04-stlink -f ./assets/docker/ubuntu22.04-stlink.Dockerfile .
 
 # run
 # docker run --rm -it --privileged  hodge/ubuntu20.04-stlink 
