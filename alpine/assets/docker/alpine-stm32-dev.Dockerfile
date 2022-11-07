@@ -3,8 +3,9 @@ FROM alpine
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
 	&& apk update \
-	&& apk add gcc-arm-none-eabi stlink openocd --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted
-
+	&& apk add openrc openssh-server gcompat libstdc++ bash gcc-arm-none-eabi stlink openocd --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted \
+	&& sed -i 's/AllowTcpForwarding no/AllowTcpForwarding yes/g' /etc/ssh/sshd_config \
+	&& sed -i 's/#PermitTunnel no/PermitTunnel yes/g' /etc/ssh/sshd_config	\
 # build 
 # docker build -t hodge/alpine-stm32-dev -f ./assets/docker/alpine-stm32-dev.Dockerfile .
 

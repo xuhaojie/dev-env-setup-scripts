@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
 RUN apt-get update \
-	&& apt-get -y install gcc-arm-none-eabi stlink-tools openocd make git \
+	&& apt-get -y install stlink-tools openocd make git gcc-arm-none-eabi \
 	&& apt-get clean
 
 # build 
