@@ -19,12 +19,16 @@ RUN apt-get update \
 	&& echo echo "========= install STM8 StdPeriphLib =========" \
 	&& wget https://github.com/xuhaojie/STM8S_StdPeriph_Lib/archive/refs/heads/main.zip -O /tmp/STM8S_StdPeriph_Lib.zip \
 	&& unzip /tmp/STM8S_StdPeriph_Lib.zip -d /usr/local/ \
+	&& mv /usr/local/STM8S_StdPeriph_Lib-main /usr/local/STM8S_StdPeriph_Lib \
 	&& wget https://github.com/xuhaojie/STM8L10x_StdPeriph_Lib/archive/refs/heads/main.zip -O /tmp/STM8L10x_StdPeriph_Lib.zip \
 	&& unzip /tmp/STM8L10x_StdPeriph_Lib.zip -d /usr/local/ \
+	&& mv /usr/local/STM8L10x_StdPeriph_Lib-main /usr/local/STM8L10x_StdPeriph_Lib \	
 	&& wget https://github.com/xuhaojie/STM8TL5x_StdPeriph_Lib/archive/refs/heads/main.zip -O /tmp/STM8TL5x_StdPeriph_Lib.zip \
 	&& unzip /tmp/STM8TL5x_StdPeriph_Lib.zip -d /usr/local/ \
+	&& mv /usr/local/STM8TL5x_StdPeriph_Lib-main /usr/local/STM8TL5x_StdPeriph_Lib \		
 	&& wget https://github.com/xuhaojie/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib/archive/refs/heads/main.zip -O /tmp/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib.zip \
-	&& unzip /tmp/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib.zip -d /usr/local/ 
+	&& unzip /tmp/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib.zip -d /usr/local/ \
+	&& mv /usr/local/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib-main /usr/local/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib
 # failed due to newwork probleme
 #	&& git clone $BASE_URL/STM8S_StdPeriph_Lib $LIB_DIR/STM8S_StdPeriph_Lib \
 #	&& git clone $BASE_URL/STM8L10x_StdPeriph_Lib $LIB_DIR/STM8L10x_StdPeriph_Lib \
