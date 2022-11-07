@@ -4,7 +4,7 @@ LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
 RUN apt-get update \
 	&& apt-get -y install gcc-arm-none-eabi stlink-tools openocd make git \
-	&& apt-get clean --purge
+	&& apt-get clean
 
 # build 
 # docker build -t hodge/ubuntu22.04-stm32-dev -f ./assets/docker/ubuntu22.04-stm32-dev.Dockerfile .
