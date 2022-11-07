@@ -3,7 +3,8 @@ FROM ubuntu:22.04
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
 RUN apt-get update \
-	&& apt-get -y install make gcc-arm-none-eabi stlink-tools openocd
+	&& apt-get -y install gcc-arm-none-eabi stlink-tools openocd make git \
+	&& apt-get clean --purge
 
 # build 
 # docker build -t hodge/ubuntu22.04-stm32-dev -f ./assets/docker/ubuntu22.04-stm32-dev.Dockerfile .

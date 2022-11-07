@@ -1,8 +1,9 @@
-FROM hodge/alpine-gcc-arm-none-eabi
+FROM alpine
 
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
-
-RUN apk add stlink openocd --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
+	&& apk update \
+	&& apk add gcc-arm-none-eabi stlink openocd --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted
 
 # build 
 # docker build -t hodge/alpine-stm32-dev -f ./assets/docker/alpine-stm32-dev.Dockerfile .

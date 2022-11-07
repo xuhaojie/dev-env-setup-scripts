@@ -1,4 +1,3 @@
 #!/bin/bash
-./install-gcc-arm-none-eabi.sh
 
-./install-stlink.sh
+sudo apt-get update && apt-get -y install make git gcc-arm-none-eabi stlink-tools openocd

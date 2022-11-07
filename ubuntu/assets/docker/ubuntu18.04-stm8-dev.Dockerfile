@@ -7,17 +7,29 @@ ARG BASE_URL=https://github.com/xuhaojie
 ARG LIB_DIR=/usr/local
 
 RUN apt-get update \
-	&& apt-get install -y git make gcc pkg-config libusb-1.0-0-dev sdcc \
+	&& apt-get install -y wget unzip git make gcc pkg-config libusb-1.0-0-dev sdcc openssh-server \
+#	&& echo "140.82.112.4 github.com" | tee -a /etc/hosts \
+	&& echo echo "========= install stm8flash =========" \
 	&& git clone https://github.com/vdudouyt/stm8flash.git $TARGET_DIR \
 	&& cd $TARGET_DIR \
 	&& make \
 	&& make install \
 	&& cd / \
 	&& rm -rf $TARGET_DIR \
-	&& git clone $BASE_URL/STM8S_StdPeriph_Lib $LIB_DIR/STM8S_StdPeriph_Lib \
-	&& git clone $BASE_URL/STM8L10x_StdPeriph_Lib $LIB_DIR/STM8L10x_StdPeriph_Lib \
-	&& git clone $BASE_URL/STM8TL5x_StdPeriph_Lib $LIB_DIR/STM8TL5x_StdPeriph_Lib \
-	&& git clone $BASE_URL/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib $LIB_DIR/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib
+	&& echo echo "========= install STM8 StdPeriphLib =========" \
+	&& wget https://github.com/xuhaojie/STM8S_StdPeriph_Lib/archive/refs/heads/main.zip -O /tmp/STM8S_StdPeriph_Lib.zip \
+	&& unzip /tmp/STM8S_StdPeriph_Lib.zip -d /usr/local/ \
+	&& wget https://github.com/xuhaojie/STM8L10x_StdPeriph_Lib/archive/refs/heads/main.zip -O /tmp/STM8L10x_StdPeriph_Lib.zip \
+	&& unzip /tmp/STM8L10x_StdPeriph_Lib.zip -d /usr/local/ \
+	&& wget https://github.com/xuhaojie/STM8TL5x_StdPeriph_Lib/archive/refs/heads/main.zip -O /tmp/STM8TL5x_StdPeriph_Lib.zip \
+	&& unzip /tmp/STM8TL5x_StdPeriph_Lib.zip -d /usr/local/ \
+	&& wget https://github.com/xuhaojie/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib/archive/refs/heads/main.zip -O /tmp/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib.zip \
+	&& unzip /tmp/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib.zip -d /usr/local/ 
+# failed due to newwork probleme
+#	&& git clone $BASE_URL/STM8S_StdPeriph_Lib $LIB_DIR/STM8S_StdPeriph_Lib \
+#	&& git clone $BASE_URL/STM8L10x_StdPeriph_Lib $LIB_DIR/STM8L10x_StdPeriph_Lib \
+#	&& git clone $BASE_URL/STM8TL5x_StdPeriph_Lib $LIB_DIR/STM8TL5x_StdPeriph_Lib \
+#	&& git clone $BASE_URL/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib $LIB_DIR/STM8L15x-16x-05x-AL31-L_StdPeriph_Lib
 
 
 # build 
