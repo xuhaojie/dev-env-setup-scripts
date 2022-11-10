@@ -21,6 +21,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 
 # run
 # docker run --rm -it --privileged hodge/alpine-stm8flash 
+# docker run -it --device=/dev/bus/usb/001/001:/dev/bus/usb/001/001 hodge/alpine-stm8flash
 
 # verify in docker
 # docker run --rm hodge/alpine-stm8flash stm8flash -V
