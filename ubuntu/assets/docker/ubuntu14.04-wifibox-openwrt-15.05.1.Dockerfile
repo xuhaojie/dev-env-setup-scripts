@@ -4,7 +4,7 @@ LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
 
 ADD wifibox-openwrt-15.05.1.tar.bzip2 /home/op/
 
-WORKDIR /home/op/openwrt-15.05.1/
+WORKDIR /home/op/wifibox-openwrt-15.05.1/
 
 ENTRYPOINT ["/bin/bash"]
 
