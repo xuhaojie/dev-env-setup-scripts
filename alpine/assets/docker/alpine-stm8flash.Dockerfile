@@ -20,7 +20,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 # docker build -t hodge/alpine-stm8flash -f ./assets/docker/alpine-stm8flash.Dockerfile .
 
 # run
-# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO hodge/alpine-stm8flash 
+# docker run --rm -it --device /dev/ttyUSB0 hodge/alpine-stm8flash 
+# docker run --rm -it --device /dev/ttyUSB0:/dev/ttyUSB0 hodge/alpine-stm8flash 
 
 # verify in docker
 # docker run --rm hodge/alpine-stm8flash stm8flash -V

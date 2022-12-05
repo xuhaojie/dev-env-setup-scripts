@@ -15,7 +15,8 @@ RUN apk add git \
 # docker build -t hodge/alpine-stm8-dev -f ./assets/docker/alpine-stm8-dev.Dockerfile .
 
 # run
-# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO hodge/alpine-stm8-dev 
+# docker run --rm -it --device /dev/ttyUSB0:/dev/ttyUSB0 hodge/alpine-stm8-dev 
+# docker run --rm -it --device /dev/ttyUSB0 hodge/alpine-stm8-dev
 
 # verify in docker
 # docker run --rm hodge/alpine-stm8-dev stm8flash  -V && sdcc -v
