@@ -7,16 +7,8 @@ then
 fi
 
 target_file=/etc/docker/daemon.json
-backup_file=$target_file.bak
 
-if [ -f $backup_file ]; then 
-	rm $backup_file
-fi
-
-if [ -f $target_file ]; then 
-	sudo mv $target_file $backup_file
-fi
-
+sudo mv $target_file $target_file.bak
 
 mirrors=("https://registry.docker-cn.com" "http://hub-mirror.c.163.com" "https://docker.mirrors.ustc.edu.cn")
 

@@ -10,9 +10,15 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 	&& apk add openrc openssh-server gcompat libstdc++ bash \ 
 	&& sed -i 's/AllowTcpForwarding no/AllowTcpForwarding yes/g' $TARGET_FILE \
 	&& sed -i 's/#PermitTunnel no/PermitTunnel yes/g' $TARGET_FILE
-
 	#&& rc-update add sshd 
 	#&& service sshd restart
+
+RUN adduser -h /home/vscode -D -s /bin/bash vscode \
+	&& passwd -d vscode
+
+USER vscode
+
+WORKDIR /home/vscode/
 
 # build 
 # docker build -t hodge/alpine-remote-ssh -f ./assets/docker/alpine-remote-ssh.Dockerfile .

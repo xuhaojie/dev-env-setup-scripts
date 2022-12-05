@@ -53,9 +53,7 @@ if [ -f $backup_file ]; then
 	rm $backup_file
 fi
 
-if [ -f $target_file ]; then 
-	sudo mv $target_file $backup_file
-fi
+mv $target_file $backup_file
 
 #for mirror in ${docker_registry_mirrors[*]}
 

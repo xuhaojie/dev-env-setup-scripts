@@ -1,16 +1,14 @@
-FROM alpine
+FROM hodge/alpine-gcc-arm-none-eabi
 
 LABEL maintainer="xuhaojie<xuhaojie@hotmail.com>"
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
-	&& apk update \
-	&& apk add openrc openssh-server gcompat libstdc++ bash gcc-arm-none-eabi stlink openocd --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted \
-	&& sed -i 's/AllowTcpForwarding no/AllowTcpForwarding yes/g' /etc/ssh/sshd_config \
-	&& sed -i 's/#PermitTunnel no/PermitTunnel yes/g' /etc/ssh/sshd_config	\
+
+RUN apk add stlink openocd --update-cache --repository http://mirrors.ustc.edu.cn/alpine/v3.16/main --allow-untrusted
+
 # build 
 # docker build -t hodge/alpine-stm32-dev -f ./assets/docker/alpine-stm32-dev.Dockerfile .
 
 # run
-# docker run --rm -it --privileged hodge/alpine-stm32-dev 
+# docker run --rm -it --device /dev/mem:/dev/men --cap-add SYS_RAWIO hodge/alpine-stm32-dev 
 
 # verify in docker
 # docker run --rm -it hodge/alpine-stm32-dev st-info
