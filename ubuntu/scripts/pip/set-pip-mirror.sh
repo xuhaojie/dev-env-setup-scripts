@@ -38,13 +38,6 @@ else
 	echo "change mirror to $mirror_name"
 fi
 
-#export GO111MODULE="on"
-#go env -w GO111MODULE="on"
-#echo "export GO111MODULE="on"" >> ~/.profile && source ~/.profile
-
-#export GOPROXY=$mirror_url
-#go env -w GOPROXY=$mirror_url
-#echo "export GOPROXY=$mirror_url" >> ~/.profile && source ~/.profile
 
 target_file=/home/$USER/.pip/pip.conf
 backup_file=$target_file.bak
@@ -55,14 +48,10 @@ fi
 
 mv $target_file $backup_file
 
-#for mirror in ${docker_registry_mirrors[*]}
-
-#[global]
-#index-url = https://pypi.tuna.tsinghua.edu.cn/simple
-#[install]
-#trusted-host = https://pypi.tuna.tsinghua.edu.cn
-
-echo -e "GO111MODULE=on" | tee -a $target_file
-echo -e "GOPROXY=$mirror_url" | tee -a $target_file
+echo -e "[global]" | tee -a $target_file
+echo -e "index-url = $mirror_url" | tee -a $target_file
+echo -e "[install]" | tee -a $target_file
+echo -e "trusted-host = https://pypi.tuna.tsinghua.edu.cn" | tee -a $target_file
 
 
+pip3 config list
